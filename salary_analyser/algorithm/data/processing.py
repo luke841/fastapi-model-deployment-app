@@ -1,8 +1,6 @@
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
-from .utils import replace_string_in_dict_keys
-
 
 def process_data(
     X, categorical_features=[], label=None, training=True, encoder=None, lb=None
@@ -70,22 +68,3 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
-
-
-def clean_census_records(census_records: list[dict]) -> list[dict]:
-    """
-    Cleans the census dictionary keys to replace - with _ 
-    such that it can be validated correctly
-
-    Parameters
-    ----------
-    census_records: 
-        A list of dictionaries containing the census records
-
-    Returns
-    -------
-    cleansed_records:
-        Census records with the cleaned keys
-    """
-
-    return replace_string_in_dict_keys(census_records, "-", "_")

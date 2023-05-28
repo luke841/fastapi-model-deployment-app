@@ -2,7 +2,6 @@ from argparse import ArgumentParser
 from pathlib import Path
 
 from salary_analyser.algorithm.data import (
-    clean_census_records,
     CensusRecord,
     dicts_to_dataclass, 
     read_csv, 
@@ -35,14 +34,11 @@ def cleanse_census_csv(src_file: Path, output_file: Path):
     # Read in the csv and format to dictionaries
     census_record_list = read_csv(src_file)
     
-    # Replace the - for _ int the census keys so they can be validated.
-    cleansed_records = clean_census_records(census_record_list) 
-    
     # Convert into dataclasses and validate
-    cleansed_records_dataclasses = dicts_to_dataclass(cleansed_records, CensusRecord)
+    census_records = dicts_to_dataclass(census_record_list, CensusRecord)
 
     # Output cleansed file to csv
-    write_dataclasses_to_csv(output_file, cleansed_records_dataclasses)
+    write_dataclasses_to_csv(output_file, census_records)
 
 
 if __name__ == "__main__":
