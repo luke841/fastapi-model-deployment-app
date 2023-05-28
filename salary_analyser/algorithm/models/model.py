@@ -6,7 +6,7 @@ from salary_analyser.algorithm.settings.settings import (
     MODEL_LABEL_COLUMN,
 )
 
-
+    
 def save_model(model, path):
     joblib.dump(model, path)
 
@@ -40,9 +40,11 @@ class RandomForestModel:
         X_train, _, _, _ = process_data(
             features, 
             categorical_features=self.categorical_features, 
-            label=self.label, 
+            label=None, 
             encoder=self._encoder,
             lb=self._lb,
             training=False,
         )
-        return self._model.predict(X_train)
+        predictions = self._model.predict(X_train)
+        prediction_labels = self._lb.inverse_transform(predictions)
+        return prediction_labels
