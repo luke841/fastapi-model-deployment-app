@@ -1,4 +1,4 @@
-from .census_record import CensusRecord
+from .census_record import CensusRecord, InferenceResult
 from .processing import process_data
 from .utils import (
     dicts_to_dataclass, 

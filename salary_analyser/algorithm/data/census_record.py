@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, Field
 
 
@@ -16,4 +18,8 @@ class CensusRecord(BaseModel):
     capital_loss: int = Field(alias='capital-loss')
     hours_per_week: int = Field(alias='hours-per-week')
     native_country: str = Field(alias='native-country')
+    salary: Optional[str] = None
+
+
+class InferenceResult(BaseModel):
     salary: str
