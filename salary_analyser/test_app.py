@@ -1,9 +1,11 @@
+# TODO: get this to run in the tests/ folder
+
+
 import json
 
 from fastapi.testclient import TestClient
 
 from salary_analyser.main import app
-
 
 client = TestClient(app)
 
