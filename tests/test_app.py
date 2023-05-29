@@ -1,9 +1,9 @@
-# import json
+import json
 
-# from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient
 
+from salary_analyser.algorithm.data.utils import dicts_to_dataclass, read_csv, write_dataclasses_to_csv
 # from salary_analyser.main import app
-
 
 # client = TestClient(app)
 
