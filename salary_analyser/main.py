@@ -3,10 +3,10 @@ import pandas as pd
 
 from salary_analyser.algorithm.data import CensusRecord, InferenceResult
 from salary_analyser.algorithm.models import load_model
+from salary_analyser.algorithm.settings.settings import DEFAULT_MODEL_PATH
 
 # TODO: setup default model location using relative path
-# from salary_analyser.algorithm.settings.settings import DEFAULT_MODEL_LOCATION
-DEFAULT_MODEL_LOCATION = "../files/model/census_model.pkl"
+DEFAULT_MODEL_LOCATION = DEFAULT_MODEL_PATH
 
 
 app = FastAPI()
