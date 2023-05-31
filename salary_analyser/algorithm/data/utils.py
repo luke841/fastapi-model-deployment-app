@@ -1,15 +1,16 @@
 import csv
-from copy import deepcopy
-from pathlib import Path
 
-from dataclasses import asdict
+from fastapi.encoders import jsonable_encoder
+from pathlib import Path
+import pandas as pd
+from pydantic import BaseModel
 
 
 def read_csv(path) -> list[dict]:
     with open(path, "r") as fp:
         reader = csv.DictReader(fp, delimiter=',', skipinitialspace=True)
-        census_values = list(reader)
-    return census_values
+        records = list(reader)
+    return records
 
 
 def write_dataclasses_to_csv(csv_file: str, dataclass_list: list):
@@ -23,3 +24,7 @@ def write_dataclasses_to_csv(csv_file: str, dataclass_list: list):
 
 def dicts_to_dataclass(records: list[dict], DataClass):
     return list(map(lambda record: DataClass(**record), records))
+
+
+def dataclasses_to_dataframe(dataclasses: list[BaseModel], by_alias: bool=False) -> pd.DataFrame:
+    return pd.DataFrame(jsonable_encoder(dataclasses, by_alias=by_alias) )
