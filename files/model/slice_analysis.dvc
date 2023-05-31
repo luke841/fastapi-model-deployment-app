@@ -1,0 +1,5 @@
+outs:
+- md5: bb32c60afe60dbd330c8686a14d67c1d.dir
+  size: 2602
+  nfiles: 9
+  path: slice_analysis
